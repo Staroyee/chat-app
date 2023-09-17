@@ -9,35 +9,57 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">DELT supplements</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">All</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Supplements</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Equipment</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Accessories</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="search DELT.com" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                    <i class="bi bi-search"></i>Search</button>
-            </form>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                    <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="15"
+                        alt="DELT supplements logo" loading="lazy" />
+                </a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">All</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Supplements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Equipment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Accessories</a>
+                    </li>
+                </ul>
 
+                <form class="form-inline my-2 my-lg-0 d-flex">
+                    <input class="form-control mr-sm-2" type="search" placeholder="search DELT" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <a class="text-reset me-3" href="#">
+                    <i class="fas fa-shopping-cart">CART</i>
+                </a>
+                {{#if logged_in}}
+                <a href="/profile">profile</a> |
+                <button class="no-button" id="logout">logout</button>
+                {{else}}
+                <a href="/login">login</a>
+                {{/if}}
+            </div>
         </div>
     </nav>
+    <main class="">
+        {{{ body }}}
+    </main>
+
+
 </body>
 
 <footer>
