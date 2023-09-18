@@ -26,6 +26,10 @@ Product.init(
         isDecimal: true,
       },
     },
+    images: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     stock: {
       type: DataTypes.INTEGER,
       allowNull: false,
