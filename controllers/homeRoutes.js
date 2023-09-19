@@ -14,8 +14,11 @@ router.get('/', async (req, res) => {
             ],
         });
 
-        // Testing for insomnia
+        // // Testing for insomnia
         // res.json(productData);
+
+        // TODO: Uncomment after view page is complete
+        // Serialize data so the template can read it
         const products = productData.map((product) => product.get({ plain: true }));
 
 
