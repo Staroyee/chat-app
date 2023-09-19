@@ -14,6 +14,12 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+
+app.use(function(req, res, next) {
+  res.header("Content-Security-Policy", "script-src 'self' https://cdn.jsdelivr.net");
+  return next();
+});
+
 app.use(morgan('combined'));
 app.use(helmet());
 app.engine('handlebars', hbs.engine);
