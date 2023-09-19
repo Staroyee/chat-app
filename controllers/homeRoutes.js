@@ -33,6 +33,26 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/products', async (req, res) => {
+    try {
+        const productData = await Product.findAll({
+            include: [
+                {
+                    model: Category,
+                    attributes: ['category_name'],
+                },
+            ],
+        });
+console.log(productData);
+        const products = productData.get({ plain: true });
+
+        res.render('products', {
+            ...products
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 // Product view :show product by id
 router.get('/products/:id', async (req, res) => {
@@ -45,7 +65,7 @@ router.get('/products/:id', async (req, res) => {
                 },
             ],
         });
-
+console.log(productData);
         const products = productData.get({ plain: true });
 
         res.render('products', {
