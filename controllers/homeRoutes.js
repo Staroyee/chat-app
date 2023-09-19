@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const withAuth = require('../../utils/withAuth');
+const withAuth = require('../utils/withAuth');
 const { Product, Category, Tag, ProductTag, User, Order } = require('../models');
 
 router.get('/', async (req, res) => {
@@ -15,17 +15,14 @@ router.get('/', async (req, res) => {
         });
 
         // Testing for insomnia
-        res.json(productData);
-
-        // TODO: Uncomment after view page is complete
-        // Serialize data so the template can read it
-        //const products = productData.map((product) => product.get({ plain: true }));
+        // res.json(productData);
+        const products = productData.map((product) => product.get({ plain: true }));
 
 
         // // Pass serialized data and session flag into template
-        // res.render('homepage', {
-        //     products
-        // });
+        res.render('homepage', {
+            products
+        });
 
     } catch (err) {
         // Render an error page with a user-friendly message
