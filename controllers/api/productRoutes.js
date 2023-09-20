@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Op } = require('sequelize');
 const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // The `/api/products` endpoint
@@ -42,6 +43,31 @@ router.get('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// router.get('/search/:searchTerm', async (req, res) => {
+//   try {
+//     const productData = await Product.findAll({
+//       where: {
+//         product_name: {
+//           [Op.like]: `%${req.params.searchTerm}%`,
+//         },
+//       },
+//       include: [
+//         {
+//           model: Category,
+//           attributes: ['category_name'],
+//         },
+//       ],
+//     });
+//     // const products = productData.map((product) => product.get({ plain: true }));
+//     // console.log(products);
+    
+//     res.status(200).json(productData);
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 // Create new product
 router.post('/', (req, res) => {
