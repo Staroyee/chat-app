@@ -1,13 +1,11 @@
-<body>
     <div class="container">
-        <img src="https://placehold.co/600x400" class="rounded float-start" alt="...">
+        <img src="{{ images }}" class="rounded float-start" alt="...">
         <div class="card h-100">
             <div class="card-body">
-                <h5 class="card-title"> {{ product item }}</h5>
-                <h6 class="card-title"> {{ $ product price }}</h6>
-                <p class="card-text"> {{ any description ? }}</p>
+                <h5 class="card-title">{{ product_name }}</h5>
+                <h6 class="card-title">{{ price }}</h6>
+                <p class="card-text">{{ product_description }}</p>
             </div>
         </div>
         <a href="#" class="btn btn-primary float-end">Add to Cart</a>
     </div>
-</body>

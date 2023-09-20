@@ -43,7 +43,7 @@ router.get('/products', async (req, res) => {
                 },
             ],
         });
-console.log(productData);
+        console.log(productData);
         const products = productData.get({ plain: true });
 
         res.render('products', {
@@ -65,11 +65,10 @@ router.get('/products/:id', async (req, res) => {
                 },
             ],
         });
-console.log(productData);
-        const products = productData.get({ plain: true });
-
+        const product = productData.get({ plain: true });
+        console.log(product);
         res.render('products', {
-            ...products
+            ...product
         });
     } catch (err) {
         res.status(500).json(err);
@@ -78,16 +77,45 @@ console.log(productData);
 
 
 // Category view ;show category by id
-router.get('/categories/:id', async (req, res) => {
+router.get('/accessories', async (req, res) => {
     try {
-        const categoryData = await Category.findByPk(req.params.id, {
+        const categoryData = await Category.findByPk(3, {
             include: [{ model: Product }]
         });
 
-        const categories = categoryData.get({ plain: true });
+        const category = categoryData.get({ plain: true });
+        res.render('singleCategory', {
+            ...category
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
-        res.render('categories', {
-            ...categories
+router.get('/equipment', async (req, res) => {
+    try {
+        const categoryData = await Category.findByPk(2, {
+            include: [{ model: Product }]
+        });
+
+        const category = categoryData.get({ plain: true });
+        res.render('singleCategory', {
+            ...category
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/supplements', async (req, res) => {
+    try {
+        const categoryData = await Category.findByPk(1, {
+            include: [{ model: Product }]
+        });
+
+        const category = categoryData.get({ plain: true });
+        res.render('singleCategory', {
+            ...category
         });
     } catch (err) {
         res.status(500).json(err);
