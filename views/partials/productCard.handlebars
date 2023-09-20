@@ -1,4 +1,20 @@
-    <div class="container">
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{ images }}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ product_name }}</h5>
+        <p class="card-text">{{ product_description }}</p>
+        <h6 class="card-text"><small class="text-body-secondary">${{ price }}</small></h6>
+        <a id="add-cart" class="btn btn-primary float-end">Add to Cart</a>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    {{!-- <div class="container">
         <img src="{{ images }}" class="rounded float-start" alt="...">
         <div class="card h-100">
             <div class="card-body">
@@ -8,4 +24,4 @@
             </div>
         </div>
         <a href="#" class="btn btn-primary float-end">Add to Cart</a>
-    </div>
+    </div> --}}
