@@ -39,29 +39,12 @@ router.get('/', async (req, res) => {
   }
 });
 
-// const searchTerm = 'search term'; // Replace with the user's input
-
-// Product.findAll({
-//   where: {
-//     productName: {
-//       [Op.iLike]: `%${searchTerm}%`,
-//     },
-//   },
-// })
-//   .then((products) => {
-//     // Process the products that match the search term
-//     console.log(products);
-//   })
-//   .catch((error) => {
-//     console.error('Error searching for products:', error);
-//   });
-
-router.get('/search', async (req, res) => {
+router.get('/search/:searchTerm', async (req, res) => {
   try {
     const productData = await Product.findAll({
       where: {
         product_name: {
-          [Op.like]: `%${req.body.searchTerm}%`,
+          [Op.like]: `%${req.params.searchTerm}%`,
         },
       },
       include: [
@@ -72,13 +55,12 @@ router.get('/search', async (req, res) => {
       ],
     });
     const products = productData.map((product) => product.get({ plain: true }));
-    console.log(products);
-    console.log('error');
     res.render('allProducts', {
       products,
     });
-  } catch (err) {
-    res.status(500).json(err);
+  }  catch (err) {
+    // Render an error page with a user-friendly message
+    console.log(err)
   }
 });
 
