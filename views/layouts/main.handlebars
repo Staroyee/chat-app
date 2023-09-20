@@ -26,7 +26,7 @@
                 </a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">All</a>
+                        <a class="nav-link" href="/products">All</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/supplements">Supplements</a>
@@ -40,8 +40,8 @@
                 </ul>
             </div>
 
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="search DELT" aria-label="Search">
+            <form id="searchForm" class="d-flex" role="search">
+                <input name="searchTerm" class="form-control me-2" type="search" placeholder="search DELT" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
             <a class="text-reset me-3 pd-3" href="#">
@@ -58,7 +58,6 @@
 
     <main class="container container-fluid">
         {{{ body }}}
-        <img src="/images/delt-logo.png" alt="image">
     </main>
 </body>
 
@@ -73,6 +72,8 @@
         <p class="text-center text-body-secondary">© 2023 DELT, Inc</p>
     </footer>
 </div>
+
+<script src="/js/searchForm.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
