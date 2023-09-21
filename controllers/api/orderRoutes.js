@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const withAuth = require('../../utils/withAuth');
-const { Product, Order, User } = require('../../models');
+const { Product, Orders, User } = require('../../models');
 
 router.get('/', withAuth, async (req, res) => {
   try {
-    const orders = await Order.findAll({ include: [Product, User] });
+    const orders = await Orders.findAll({ include: [Product, User] });
     if (!orders) {
       res.status(404).json({ message: 'No orders found' });
       return;
@@ -17,7 +17,7 @@ router.get('/', withAuth, async (req, res) => {
 
 router.get('/orders/:id', withAuth, async (req, res) => {
   try {
-    const order = await Order.findByPk(req.params.id);
+    const order = await Orders.findByPk(req.params.id);
     if(!order) {
         res.status(404).json({ message: 'No order found'});
         return;
@@ -31,7 +31,7 @@ router.get('/orders/:id', withAuth, async (req, res) => {
 router.post('/:id', async (req, res) => {
     const data = req.body;
     try {
-      const order = await Order.bulkCreate(data);
+      const order = await Orders.bulkCreate(data);
       res.status(200).json({ success: true, data: order });
     } catch (err) {
       res.status(500).json({ success: false, err: err.message });

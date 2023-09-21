@@ -1,9 +1,10 @@
 const sequelize = require('../config/connection');
-const { User, Product, Category } = require('../models');
+const { User, Product, Category, Orders } = require('../models');
 
 const userData = require('./userData.json');
 const productData = require('./productData.json');
 const categoryData = require('./categoryData.json');
+const orderData = require('./orderData.json')
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -25,6 +26,14 @@ const seedDatabase = async () => {
       ...product,
     });
   }
+
+  for (const order of orderData) {
+    await Orders.create({
+      ...order,
+    });
+  }
+
+
 
   
   process.exit(0);

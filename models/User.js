@@ -27,6 +27,15 @@ User.init(
       validate: {
         isEmail: true,
       },
+    
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    phone: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     password: {
       type: DataTypes.STRING,
