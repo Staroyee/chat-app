@@ -7,7 +7,7 @@ const {
   Tag,
   ProductTag,
   User,
-  Order,
+  Orders,
 } = require('../models');
 
 router.get('/', async (req, res) => {
@@ -29,17 +29,15 @@ router.get('/', async (req, res) => {
     // Serialize data so the template can read it
     const products = productData.map((product) => product.get({ plain: true }));
 
-
-        // // Pass serialized data and session flag into template
-        res.render('homepage', {
-            products,
-            loggedIn: req.session.loggedIn, 
-        });
-
-    } catch (err) {
-        // Render an error page with a user-friendly message
-        res.render('error', { error: 'An error occurred while fetching data.' });
-    }
+    // // Pass serialized data and session flag into template
+    res.render('homepage', {
+      products,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    // Render an error page with a user-friendly message
+    res.render('error', { error: 'An error occurred while fetching data.' });
+  }
 });
 
 router.get('/search/:searchTerm', async (req, res) => {
@@ -60,10 +58,11 @@ router.get('/search/:searchTerm', async (req, res) => {
     const products = productData.map((product) => product.get({ plain: true }));
     res.render('allProducts', {
       products,
+      loggedIn: req.session.loggedIn,
     });
-  }  catch (err) {
+  } catch (err) {
     // Render an error page with a user-friendly message
-    console.log(err)
+    console.log(err);
   }
 });
 
@@ -82,6 +81,7 @@ router.get('/products', async (req, res) => {
     console.log('error');
     res.render('allProducts', {
       products,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -103,6 +103,7 @@ router.get('/products/:id', async (req, res) => {
     console.log(product);
     res.render('products', {
       ...product,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -119,6 +120,7 @@ router.get('/accessories', async (req, res) => {
     const category = categoryData.get({ plain: true });
     res.render('singleCategory', {
       ...category,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -134,6 +136,7 @@ router.get('/equipment', async (req, res) => {
     const category = categoryData.get({ plain: true });
     res.render('singleCategory', {
       ...category,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -149,6 +152,7 @@ router.get('/supplements', async (req, res) => {
     const category = categoryData.get({ plain: true });
     res.render('singleCategory', {
       ...category,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -156,24 +160,25 @@ router.get('/supplements', async (req, res) => {
 });
 
 // WithAuth middleware to prevent access to account view
-router.get('/account', withAuth, async (req, res) => {
+router.get('/profile', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
-      include: [{ model: Order }],
+      include: [
+        { 
+          model: Orders,
+          include: Product,
+          include: User,
+        },
+      ],
     });
-
     const user = userData.get({ plain: true });
-
-    // Check if session expired
-    if (req.session.loggedIn) {
-      res.render('account', {
-        // User details & cart
-        ...user,
-      });
-    }
-
-    res.redirect('/');
+    console.log(user);
+    res.render('profile', {
+      // User details & cart
+      ...user,
+      loggedIn: req.session.loggedIn,
+    });
     return;
   } catch (err) {
     res.status(500).json(err);

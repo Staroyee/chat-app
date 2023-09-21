@@ -1,0 +1,19 @@
+    <div class="container mt-5">
+        <div class="card" style="width: 25rem;">
+            <h5 class="card-header">Account Details</h5>
+            <div class="card-body">
+                <h5 class="card-title">Name: {{ user_name }}</h5>
+                <p class="card-text">Address: {{ address }}</p>
+                <p class="card-text">Phone: {{ phone }}</p>
+                <a href="/edit-user" class="card-link"><button>Edit Details</button></a>
+                <a href="/" class="card-link"><button id="deleteBtn">Delete Account</button></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="card" style="width: 10rem;">
+            <h5 class="card-header">Order History</h5>
+        </div>
+    </div>
+    {{> orderHistory this}}
