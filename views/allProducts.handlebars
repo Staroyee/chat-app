@@ -1,4 +1,10 @@
-<h1>All products</h1>
-{{#each products as |product|}}
-{{> productCard this}}
-{{/each}}
+<div class="container mt-5">
+    <h2>All Products</h2>
+    <div class="row mt-3">
+        <div class="card">
+            {{#each products as |product|}}
+            {{> productCard this}}
+            {{/each}}
+        </div>
+    </div>
+</div>

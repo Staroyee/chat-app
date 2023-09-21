@@ -1,4 +1,12 @@
-<h1>{{ category_name }}</h1>
-{{#each products as |product|}}
-{{> productCard this}}
-{{/each}}
+<div class="container mt-5">
+    <h2>{{ category_name }}</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+        <div class="col">
+            <div class="card">
+                {{#each products as |product|}}
+                {{> productCard this}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

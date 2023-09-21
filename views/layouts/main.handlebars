@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+    <nav class="navbar navbar-expand-lg navbar-light d-flex align-items-center py-3">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
                 data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -22,12 +22,12 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <a class="navbar-brand mt-2 mt-lg-0" href="/">
-                    <img src="/images/delt-logo.png" height="80" alt="DELT supplements logo" loading="lazy" />
+                <a class="navbar-brand mt-2 mt-lg-0 px-3" href="/">
+                    <img src="/images/delt-logo.png" height="85" alt="DELT supplements logo" loading="lazy" />
                 </a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/products">All</a>
+                        <h5><a class="nav-link" href="/products">All</a></h5>
                     </li>
                     <li class="nav-item">
                         <h5><a class="nav-link" href="/supplements">Supplements</a></h5>
@@ -47,13 +47,13 @@
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
             <a class="text-reset me-3 pd-3" href="/cart">
-                <i class="bi bi-cart" style="font-size: 50px"></i>
+                <i class="bi bi-cart text-center" style="font-size: 50px"></i>
             </a>
             {{#if loggedIn}}
             <a href="/profile">Profile</a> |
             <button class="no-button" id="logout">Logout</button>
             {{else}}
-            <a href="/login">Login</a>
+            <h5><a href="/login">Login</a></h5>
             {{/if}}
         </div>
     </nav>
@@ -67,9 +67,7 @@
 <div id="footer" class="container">
     <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+            <li class="nav-item"><a href="/" class="nav-link px-2 text-body-secondary">Home</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
         </ul>
         <p class="text-center text-body-secondary">© 2023 DELT, Inc</p>

@@ -7,6 +7,23 @@ body {
     flex-direction: column;
 }
 
+a:link {
+    color: green;
+    text-decoration: none;
+  }
+
+a:hover {
+    color: rgb(79, 226, 255) !important;
+}
+
+.carousel-inner {
+    width:100%;
+    object-fit: contain;
+    object-position: center;
+    overflow: hidden;
+    max-height: 60vh !important;
+}
+
 #footer {
     bottom: 0;
     z-index: 10;
