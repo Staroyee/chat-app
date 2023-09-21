@@ -18,6 +18,11 @@ app.use(morgan('combined'));
 app.use(helmet());
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+app.use(function(req, res, next) {
+  res.header("Content-Security-Policy", "script-src 'self' https://cdn.jsdelivr.net");
+  return next();
+});
+app.use( helmet({ contentSecurityPolicy: false }) );
 
 const sess = {
   secret: 'Super secret secret',
@@ -34,6 +39,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
+
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
