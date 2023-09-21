@@ -29,7 +29,6 @@ router.get('/', async (req, res) => {
     // Serialize data so the template can read it
     const products = productData.map((product) => product.get({ plain: true }));
 
-<<<<<<< HEAD
 
         // // Pass serialized data and session flag into template
         res.render('homepage', {
@@ -41,16 +40,6 @@ router.get('/', async (req, res) => {
         // Render an error page with a user-friendly message
         res.render('error', { error: 'An error occurred while fetching data.' });
     }
-=======
-    // // Pass serialized data and session flag into template
-    res.render('homepage', {
-      products,
-    });
-  } catch (err) {
-    // Render an error page with a user-friendly message
-    res.render('error', { error: 'An error occurred while fetching data.' });
-  }
->>>>>>> bb1676059d30e85c245c587f46d9f5ea23021d9b
 });
 
 router.get('/search/:searchTerm', async (req, res) => {
