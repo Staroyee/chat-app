@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Order, } = require('../../models');
+const { User, Orders } = require('../../models');
 const session = require('express-session');
 const withAuth = require('../../utils/withAuth');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
     },
     include: [
       {
-        model: Order,
+        model: Orders,
         attributes: ['id', 'product_id', 'user_id']
       }
     ]
