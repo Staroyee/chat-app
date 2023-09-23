@@ -15,10 +15,6 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 56964c2d500ad70ec3193d3552b50682dae07ec6
 app.use(morgan('combined'));
 app.use(helmet());
 app.engine('handlebars', hbs.engine);
@@ -29,14 +25,6 @@ app.use(function(req, res, next) {
 });
 app.use( helmet({ contentSecurityPolicy: false }) );
 
-<<<<<<< HEAD
-app.use(function(req, res, next) {
-  res.header("Content-Security-Policy", "script-src 'self' https://cdn.jsdelivr.net");
-  return next();
-});
-app.use( helmet({ contentSecurityPolicy: false }) );
-=======
->>>>>>> 56964c2d500ad70ec3193d3552b50682dae07ec6
 
 const sess = {
   secret: 'Super secret secret',
