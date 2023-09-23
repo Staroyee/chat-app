@@ -25,7 +25,7 @@ Tag.belongsToMany(Product, {
 });
 
 User.hasMany(Orders, {
-  foreignKey: 'order_id',
+  foreignKey: 'user_id',
 });
 
 Orders.belongsTo(User, {
