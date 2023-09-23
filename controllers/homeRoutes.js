@@ -159,35 +159,43 @@ router.get('/supplements', async (req, res) => {
   }
 });
 
-// WithAuth middleware to prevent access to account view
 router.get('/profile', withAuth, async (req, res) => {
   try {
-    // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       include: [
-        { 
+        {
           model: Orders,
-          include: Product,
-          include: User,
-        },
-      ],
+          include: [
+            {
+              model: Product
+            }
+          ]
+        }
+      ]
     });
+
+    if (!userData) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
     const user = userData.get({ plain: true });
-    console.log(user);
+    console.log("userdata " , JSON.stringify(user, null, 2));
+
     res.render('profile', {
-      // User details & cart
       username: user.user_name,
       address: user.address,
       email: user.email,
       phone: user.phone,
       orders: user.orders,
-      loggedIn: req.session.loggedIn,
+      loggedIn: req.session.loggedIn
     });
-    return;
+
   } catch (err) {
+    console.error("An error occurred:", err);
     res.status(500).json(err);
   }
 });
+
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
