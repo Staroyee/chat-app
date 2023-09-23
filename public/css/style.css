@@ -7,13 +7,15 @@ body {
     flex-direction: column;
 }
 
-a:link {
-    color: green;
-    text-decoration: none;
-  }
+.navbar-light .nav-item.active .nav-link,
+.navbar-light .nav-item .nav-link:active,
+.navbar-light .nav-item .nav-link:focus,
+.navbar-light .nav-item:hover .nav-link {
+    color:  rgb(79, 226, 255) ;
+}
 
-a:hover {
-    color: rgb(79, 226, 255) !important;
+.bi-cart {
+    vertical-align: 50% !important;
 }
 
 .carousel-inner {
