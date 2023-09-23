@@ -14,6 +14,8 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+
+
 app.use(morgan('combined'));
 app.use(helmet());
 app.engine('handlebars', hbs.engine);
@@ -23,6 +25,7 @@ app.use(function(req, res, next) {
   return next();
 });
 app.use( helmet({ contentSecurityPolicy: false }) );
+
 
 const sess = {
   secret: 'Super secret secret',
