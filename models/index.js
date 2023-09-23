@@ -33,7 +33,13 @@ Orders.belongsTo(User, {
   onDelete: 'CASCADE',
 });
 
-Orders.hasMany(Product, {
+// In your model definitions
+Orders.belongsTo(Product, {
+  foreignKey: 'product_id',
+  onDelete: 'CASCADE',
+});
+
+Product.hasMany(Orders, {
   foreignKey: 'product_id',
 });
 
