@@ -1,8 +1,10 @@
+// IMPORT SEQUELIZE MODEL AND DATATYPES
 const { Model, DataTypes } = require('sequelize');
+// IMPORT SEQUELIZE CONNECTION
 const sequelize = require('../config/connection');
-
+// DEFINE THE CLASS
 class Category extends Model {}
-
+// CATEGORY MODEL DEFINITION
 Category.init(
   {
     id: {
@@ -24,5 +26,5 @@ Category.init(
     modelName: 'category',
   }
 );
-
+// EXPORT THE CATEGORY MODEL
 module.exports = Category;

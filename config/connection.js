@@ -1,3 +1,4 @@
+// CREATE A SEQUELIZE CONNECTION BY IMPORTING THE MYSQL USER DETAILS FROM THE .ENV FILE
 const Sequelize = require('sequelize');
 require('dotenv').config();
 
@@ -12,4 +13,5 @@ const sequelize = new Sequelize(
     }
   );
 
+// EXPORT THE CONNECTION
 module.exports = sequelize;

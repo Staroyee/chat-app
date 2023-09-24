@@ -1,3 +1,4 @@
+// IMPORT MODELS
 const Category = require('./Category');
 const Product = require('./Product');
 const Tag = require('./Tag');
@@ -5,6 +6,7 @@ const ProductTag = require('./ProductTag');
 const Orders = require('./Orders');
 const User = require('./User');
 
+// DEFINE ALL ASSOCIATIONS BETWEEN MODELS
 Product.belongsTo(Category, {
   foreignKey: 'category_id',
   onDelete: 'CASCADE',
@@ -33,7 +35,6 @@ Orders.belongsTo(User, {
   onDelete: 'CASCADE',
 });
 
-// In your model definitions
 Orders.belongsTo(Product, {
   foreignKey: 'product_id',
   onDelete: 'CASCADE',
@@ -43,6 +44,7 @@ Product.hasMany(Orders, {
   foreignKey: 'product_id',
 });
 
+// EXPORT ALL MODELS WITH THEIR ASSOCIATIONS
 module.exports = {
   Product,
   Category,
