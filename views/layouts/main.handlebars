@@ -12,19 +12,18 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body class="d-flex flex-column">
-    <nav class="navbar navbar-expand-lg navbar-light d-flex align-items-center py-3">
+<body class="">
+    <nav class="navbar navbar-expand-lg navbar-light  py-3">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
-                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
+            <a class="navbar-brand mr-auto px-3" href="/">
+                <img src="/images/delt-logo.png" height="85" alt="DELT supplements logo" loading="lazy" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <a class="navbar-brand mt-2 mt-lg-0 px-3" href="/">
-                    <img src="/images/delt-logo.png" height="85" alt="DELT supplements logo" loading="lazy" />
-                </a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <h5><a class="nav-link" href="/products">All</a></h5>
@@ -39,60 +38,29 @@
                         <h5><a class="nav-link" href="/accessories">Accessories</a></h5>
                     </li>
                 </ul>
-            </div>
-
-            {{!-- <form id="searchForm" class="d-flex" role="search">
-                <input name="searchTerm" class="form-control me-2" type="search" placeholder="search DELT"
-                    aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form> --}}
-            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                {{!-- <i class="bi bi-search"></i> --}}
                 <form id="searchForm" class="d-flex" role="search">
-                    <input name="searchTerm" class="form-control me-2" type="search" placeholder="search for..."
+                    <input name="searchTerm" class="form-control me-2" type="search" placeholder="search DELT"
                         aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
-            </button>
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="searchForm" class="d-flex" role="search">
-                                <input name="searchTerm" class="form-control me-2" type="search"
-                                    placeholder="search for..." aria-label="Search">
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
+                <a class="text-reset px-4" href="/cart">
+                    <i class="bi bi-cart" style="font-size: 3rem"></i>
+                </a>
+                {{#if loggedIn}}
+                <a href="/profile"><button class="btn btn-primary mx-2" id="profile">Profile</button></a>
+                <button class="btn btn-outline-primary" id="logout">Logout</button>
+                {{else}}
+                <a href="/login"><button class="btn btn-primary" id="logout">Login</button></a>
+                {{/if}}
             </div>
-
-            <a class="text-reset px-4" href="/cart">
-                <i class="bi bi-cart" style="font-size: 3rem"></i>
-            </a>
-            {{#if loggedIn}}
-            <a href="/profile"><button class="btn btn-primary mx-2" id="profile">Profile</button></a>
-            <button class="btn btn-outline-primary" id="logout">Logout</button>
-            {{else}}
-            <a href="/login"><button class="btn btn-primary" id="logout">Login</button></a>
-            {{/if}}
         </div>
     </nav>
 
-    <main class="container container-fluid">
+    <main class="container container-fluid flex-fill">
         {{{ body }}}
     </main>
-
 </body>
-
 
 <footer class="bd-footer py-4 py-md-5 mt-5">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
