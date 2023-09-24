@@ -248,8 +248,6 @@ router.post('/checkout', withAuth, async (req, res) => {
   try {
     const productIds = req.body.productId;
     const userId = req.session.user_id;
-    console.log('hello', userId);
-    console.log('howdy', productIds);
 
     const order = await Orders.create({
       product_id: productIds,
@@ -257,9 +255,10 @@ router.post('/checkout', withAuth, async (req, res) => {
     });
 
     if (order) {
-      res.status(200).send('Order created successfully.');
-
-      res.render('profile', { loggedIn: req.session.loggedIn });
+      // Include a success message in the URL query parameter
+      res.redirect('/profile?success=Order created successfully', {
+        
+      });
     } else {
       res.status(500).send('Error creating the order.');
     }
