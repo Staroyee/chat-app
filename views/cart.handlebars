@@ -1,0 +1,18 @@
+<h1>Your Shopping Cart</h1>
+<form id="checkout-form">
+  <button type="submit" class="btn btn-primary">Checkout</button>
+</form>
+<ul>
+  {{#each cartProducts}}
+    <li>
+      <h2>{{product_name}}</h2>
+      <p>{{product_description}}</p>
+      <p>Price: ${{price}}</p>
+      <div>
+        <input type="hidden" id="user-id" name="user-id" value="{{id}}">
+      </div>
+    </li>
+  {{/each}}
+</ul>
+
+

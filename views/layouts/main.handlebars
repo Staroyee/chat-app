@@ -44,9 +44,9 @@
                 <input name="searchTerm" class="form-control me-2" type="search" placeholder="search DELT" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
-            <a class="text-reset me-3 pd-3" href="#">
+            <button id="viewCart" class="text-reset me-3 pd-3">
                 <i class="bi bi-cart"></i>
-            </a>
+            </button>
             {{#if loggedIn}}
             <a href="/profile">Profile</a> |
             <button class="no-button" id="logout">Logout</button>
@@ -74,6 +74,8 @@
     </footer>
 </div>
 
+<script src="/js/checkout.js"></script>
+<script src="/js/cart.js"></script>
 <script src="/js/searchForm.js"></script>
 <script src="/js/logout.js"></script>
 
