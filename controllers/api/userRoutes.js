@@ -1,9 +1,15 @@
+// IMPORT EXPRESS ROUTER
 const router = require('express').Router();
+// IMPORT MODELS
 const { User, Orders } = require('../../models');
+// IMPORT EXPRESS SESSION
 const session = require('express-session');
+// IMPORT WITHAUTH UTIL FUNCTION
 const withAuth = require('../../utils/withAuth');
+// IMPORT SEQUELIZE CONNECT SESSION.
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+// ROUTE TO GET ALL USERS
 router.get('/', (req, res) => {
   User.findAll({
     attributes: { exclude: ['password'] },
@@ -15,6 +21,7 @@ router.get('/', (req, res) => {
     });
 });
 
+// ROUTE TO GET A SINGLE USER BY ID
 router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
@@ -41,6 +48,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// ROUTE TO CREATE A USER BASED ON THE REQUEST BODY
 router.post('/', (req, res) => {
   console.log(req.body);
   User.create({
@@ -65,6 +73,7 @@ router.post('/', (req, res) => {
     });
 });
 
+// ROUTE TO LOG A USER IN
 router.post('/login', (req, res) => {
   User.findOne({
     where: {
@@ -90,6 +99,7 @@ router.post('/login', (req, res) => {
   });
 });
 
+// ROUTE TO LOG A USER OUT
 router.post('/logout', withAuth, (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
@@ -100,6 +110,7 @@ router.post('/logout', withAuth, (req, res) => {
   }
 });
 
+// ROUTE TO UPDATE A USERS DETAILS IF THE USER HAS AUTHORISATION
 router.put('/:id', withAuth, (req, res) => {
   User.update(req.body, {
     individualHooks: true,
@@ -120,6 +131,7 @@ router.put('/:id', withAuth, (req, res) => {
     });
 });
 
+// ROUTE TO DELETE A USER IF THE USER HAS AUTHORISATION
 router.delete('/:id', withAuth, (req, res) => {
   User.destroy({
     where: {
@@ -139,4 +151,5 @@ router.delete('/:id', withAuth, (req, res) => {
     });
 });
 
+// EXPORT MODULES TO API/INDEX.JS
 module.exports = router;
