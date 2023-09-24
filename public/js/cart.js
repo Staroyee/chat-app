@@ -1,4 +1,5 @@
 const addToCartButtons = document.querySelectorAll(".addToCart");
+
 const viewCartButton = document.getElementById("viewCart");
 
 const cartProducts = JSON.parse(localStorage.getItem("cartProduct")) || [];

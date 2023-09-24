@@ -21,13 +21,6 @@ Orders.init(
         key: 'id',
       },
     },
-    order_total: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false,
-      validate: {
-        isDecimal: true,
-      },
-    },
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,

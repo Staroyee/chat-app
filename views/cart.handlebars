@@ -1,6 +1,6 @@
 <h1>Your Shopping Cart</h1>
 <form id="checkout-form">
-  <button type="submit" class="btn btn-primary">Checkout</button>
+  <button id="checkoutBtn" type="submit" class="btn btn-primary">Checkout</button>
 </form>
 <ul>
   {{#each cartProducts}}
@@ -9,7 +9,7 @@
       <p>{{product_description}}</p>
       <p>Price: ${{price}}</p>
       <div>
-        <input type="hidden" id="user-id" name="user-id" value="{{id}}">
+        <input type="hidden" id="product-id" name="product" value="{{id}}">
       </div>
     </li>
   {{/each}}

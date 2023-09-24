@@ -230,12 +230,14 @@ router.get('/cart', async (req, res) => {
       },
     });
 
-     // Add this line to check the fetched data
-    const cartProducts = productData.map((product) => product.get({ plain: true }));
+    const cartProducts = productData.map((product) =>
+      product.get({ plain: true })
+    );
     console.log('Fetched products:', cartProducts);
-    res.render('cart', { 
-      cartProducts, 
-      loggedIn: req.session.loggedIn });
+    res.render('cart', {
+      cartProducts,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (error) {
     console.error('Error fetching products:', error);
     res.status(500).send('Internal Server Error');
@@ -244,28 +246,20 @@ router.get('/cart', async (req, res) => {
 
 router.post('/checkout', withAuth, async (req, res) => {
   try {
-    const { productIds } = req.body;
-    const userId = req.session.user_id; // Get the user ID from the session
+    const productIds = req.body.productId;
+    const userId = req.session.user_id;
+    console.log('hello', userId);
+    console.log('howdy', productIds);
 
-    // Calculate the order total based on product prices
-    // You'll need to fetch the product prices from your database
-    const orderTotal = 0; // Calculate the total
-
-    // Create the order
     const order = await Orders.create({
-      product_id: productIds, // You may need to adjust this depending on your data structure
-      order_total: orderTotal,
+      product_id: productIds,
       user_id: userId,
     });
 
-   if (order) {
-      // After creating the order, set req.session.loggedIn to true
-      
-
+    if (order) {
       res.status(200).send('Order created successfully.');
 
-      // Redirect the user back to the profile page
-      res.redirect('/profile', {loggedIn: req.session.loggedIn});
+      res.render('profile', { loggedIn: req.session.loggedIn });
     } else {
       res.status(500).send('Error creating the order.');
     }
