@@ -15,4 +15,3 @@ addToCartButtons.forEach(button => {
 viewCartButton.addEventListener("click", function () {
   window.location.href = `/cart?productIds=${JSON.stringify(cartProducts)}`;
 });
-

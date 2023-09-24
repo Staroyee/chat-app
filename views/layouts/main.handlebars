@@ -41,12 +41,11 @@
                 <form id="searchForm" class="d-flex" role="search">
                     <input name="searchTerm" class="form-control me-2" type="search" placeholder="search DELT"
                         aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
 
-                <a class="text-reset px-4" href="/cart">
-                    <i class="bi bi-cart" style="font-size: 3rem"></i>
-                </a>
+                <button id="viewCart" class="btn btn-link">
+                    <i class="bi bi-cart" style="font-size: 2.5rem;"></i>
+                </button>
                 {{#if loggedIn}}
                 <a href="/profile"><button class="btn btn-primary mx-2" id="profile">Profile</button></a>
                 <button class="btn btn-outline-primary" id="logout">Logout</button>
