@@ -27,9 +27,9 @@ const seedDatabase = async () => {
     });
   }
 
-  for (const order of orderData) {
+  for (const orders of orderData) {
     await Orders.create({
-      ...order,
+      ...orders,
     });
   }
 
