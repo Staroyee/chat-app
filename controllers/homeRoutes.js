@@ -1,18 +1,15 @@
+// IMPORT EXPRESS ROUTER
 const router = require('express').Router();
+// IMPORT OP SEQUELIZE OP OPERATOR
 const { Op } = require('sequelize');
+// IMPORT WITHAUTH UTIL FUNCTION
 const withAuth = require('../utils/withAuth');
-const {
-  Product,
-  Category,
-  Tag,
-  ProductTag,
-  User,
-  Orders,
-} = require('../models');
+// IMPORT MODELS
+const { Product, Category, User, Orders } = require('../models');
 
+// ROUTE TO RENDER THE HOMEPAGE
 router.get('/', async (req, res) => {
   try {
-    // Get all product and JOIN with category data
     const productData = await Product.findAll({
       include: [
         {
@@ -21,25 +18,17 @@ router.get('/', async (req, res) => {
         },
       ],
     });
-
-    // // Testing for insomnia
-    // res.json(productData);
-
-    // TODO: Uncomment after view page is complete
-    // Serialize data so the template can read it
     const products = productData.map((product) => product.get({ plain: true }));
-
-    // // Pass serialized data and session flag into template
     res.render('homepage', {
       products,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
-    // Render an error page with a user-friendly message
     res.render('error', { error: 'An error occurred while fetching data.' });
   }
 });
 
+// ROUTE TO RENDER THE SEARCH PAGE BASED ON USER INPUT
 router.get('/search/:searchTerm', async (req, res) => {
   try {
     const productData = await Product.findAll({
@@ -61,11 +50,11 @@ router.get('/search/:searchTerm', async (req, res) => {
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
-    // Render an error page with a user-friendly message
     console.log(err);
   }
 });
 
+// ROUTE TO RENDER THE ALLPRODUCTS PAGE
 router.get('/products', async (req, res) => {
   try {
     const productData = await Product.findAll({
@@ -88,7 +77,7 @@ router.get('/products', async (req, res) => {
   }
 });
 
-// Product view :show product by id
+// ROUTE TO RENDER A SINGLE PRODUCT BY ID
 router.get('/products/:id', async (req, res) => {
   try {
     const productData = await Product.findByPk(req.params.id, {
@@ -110,7 +99,7 @@ router.get('/products/:id', async (req, res) => {
   }
 });
 
-// Category view ;show category by id
+// ROUTE TO RENDER THE SINGLECATEGORY PAGE FOR ACCESSORIES
 router.get('/accessories', async (req, res) => {
   try {
     const categoryData = await Category.findByPk(3, {
@@ -127,6 +116,7 @@ router.get('/accessories', async (req, res) => {
   }
 });
 
+// ROUTE TO RENDER THE SINGLECATEGORY PAGE FOR EQUIPMENT
 router.get('/equipment', async (req, res) => {
   try {
     const categoryData = await Category.findByPk(2, {
@@ -143,6 +133,7 @@ router.get('/equipment', async (req, res) => {
   }
 });
 
+// ROUTE TO RENDER THE SINGLECATEGORY PAGE FOR SUPPLEMENTS
 router.get('/supplements', async (req, res) => {
   try {
     const categoryData = await Category.findByPk(1, {
@@ -159,6 +150,7 @@ router.get('/supplements', async (req, res) => {
   }
 });
 
+// ROUTE TO RENDER THE USER PROFILE PAGE
 router.get('/profile', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
@@ -167,38 +159,33 @@ router.get('/profile', withAuth, async (req, res) => {
           model: Orders,
           include: [
             {
-              model: Product
-            }
-          ]
-        }
-      ]
+              model: Product,
+            },
+          ],
+        },
+      ],
     });
-
     if (!userData) {
       return res.status(404).json({ message: 'User not found' });
     }
-
     const user = userData.get({ plain: true });
-    console.log("userdata " , JSON.stringify(user, null, 2));
-
+    console.log('userdata ', JSON.stringify(user, null, 2));
     res.render('profile', {
       username: user.user_name,
       address: user.address,
       email: user.email,
       phone: user.phone,
       orders: user.orders,
-      loggedIn: req.session.loggedIn
+      loggedIn: req.session.loggedIn,
     });
-
   } catch (err) {
-    console.error("An error occurred:", err);
+    console.error('An error occurred:', err);
     res.status(500).json(err);
   }
 });
 
-
+// ROUTE TO RENDER THE LOGIN/SIGNUP PAGE
 router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
   if (req.session.loggedIn) {
     res.redirect('/');
     return;
@@ -207,14 +194,15 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// ROUTE TO RENDER THE EDIT-USER PAGE
 router.get('/edit-user', withAuth, (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
     where: {
-      id: req.session.user_id
-    }
+      id: req.session.user_id,
+    },
   })
-    .then(dbUserData => {
+    .then((dbUserData) => {
       if (!dbUserData) {
         res.status(404).json({ message: 'No user found with this id' });
         return;
@@ -226,10 +214,11 @@ router.get('/edit-user', withAuth, (req, res) => {
         loggedIn: req.session.loggedIn,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
-    })
-  });
+    });
+});
 
+// EXPORT ROUTES TO CONTROLLERS/INDEX.JS
 module.exports = router;

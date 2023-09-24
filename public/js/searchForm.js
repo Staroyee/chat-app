@@ -5,8 +5,11 @@ async function searchHandler(event) {
 
     const searchFormData = new FormData(search);
     const searchTerm = searchFormData.get('searchTerm');
-    
+    if (!searchTerm) {
+        document.location.replace('/products')
+    } else {
     document.location.replace(`/search/${searchTerm}`)
+}
 }
 
 search.addEventListener('submit', searchHandler);

@@ -1,8 +1,10 @@
+// IMPORT SEQUELIZE MODEL AND DATATYPES
 const { Model, DataTypes } = require('sequelize');
+// IMPORT SEQUELIZE CONNECTION
 const sequelize = require('../config/connection');
-
+// DEFINE THE CLASS
 class Orders extends Model {}
-
+// ORDERS MODEL DEFINITION
 Orders.init(
   {
     id: {
@@ -43,5 +45,5 @@ Orders.init(
     modelName: 'orders',
   }
 );
-
+// EXPORT THE ORDERS MODEL
 module.exports = Orders;

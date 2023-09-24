@@ -1,7 +1,11 @@
+// IMPORT EXPRESS ROUTER
 const router = require('express').Router();
+// IMPORT WITHAUTH UTIL FUNCTION
 const withAuth = require('../../utils/withAuth');
+// IMPORT MODELS
 const { Product, Orders, User } = require('../../models');
 
+// ROUTE TO GET ALL ORDERS
 router.get('/', withAuth, async (req, res) => {
   try {
     const orders = await Orders.findAll({ include: [Product, User] });
@@ -15,6 +19,7 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
+// ROUTE TO GET A SINGLE ORDER BY ID
 router.get('/orders/:id', withAuth, async (req, res) => {
   try {
     const order = await Orders.findByPk(req.params.id);
@@ -28,6 +33,7 @@ router.get('/orders/:id', withAuth, async (req, res) => {
     }
 });
 
+// ROUTE TO CREATE AN ORDER
 router.post('/:id', async (req, res) => {
     const data = req.body;
     try {
