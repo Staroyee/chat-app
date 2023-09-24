@@ -14,8 +14,6 @@ body {
     color:  rgb(79, 226, 255) ;
 }
 
-
-
 .bi-cart {
     vertical-align: 50% !important;
 }
@@ -28,8 +26,10 @@ body {
     max-height: 60vh !important;
 }
 
-#footer {
+.footer {
+    position: relative;
+    height: 150px;
     bottom: 0;
-    z-index: 10;
-    left: 0;
-}
+    clear: both;
+    padding-top: 200px;
+  } 
