@@ -1,4 +1,4 @@
-# DELT (E-Commerce Website): 
+# DELT-Fitness (E-Commerce Website): 
 
 An application that allows a buyer to purchase `Protein Powder & Nutritional Supplements` products over the internet rather than at a local fitness store.
 
@@ -35,19 +35,24 @@ SO THAT I compete against other extreme fitness competitors
 
 
 ## Preview 
-![Sample img](sample/sample-screenshot.Png)
+Click on image below to visit page:
 
-
-## Demonstration
-
-`TBC`
-
----
+[![A image thumbnail shows the application in heroku](./assets/images/heroku-preview-image.png)](https://delt-fitness-e-commerce-36c3e8da33f5.herokuapp.com/)
 
 
 ## Features
 
-`TBC`
+`CREATE user account`
+
+`LOGIN to Account`
+
+`EDIT Account details`
+
+`ADD items to cart`
+
+`VIEW all in cart`
+
+`REMOVE items from cart`
 
 ## Installation
 ```
@@ -56,19 +61,16 @@ npm install and node server.js to run
 
 ## Testing
 
-> **Important**: `Insomnia` was for testing the application's GET, POST, PUT, and DELETE routes forall models
+> **Important**: `Insomnia` was for testing the application's GET routes some models
 
-The following animation shows the application's GET routes to return all categories, all products, and all tags being tested in Insomnia:
+The following image shows the application's GET route to return all products being tested in Insomnia:
 
-![In Insomnia, the user tests “GET tags,” “GET Categories,” and “GET All Products.”.](./Assets/orm-demo-01.gif)
+![In Insomnia, the user tests “GET All Products.”](./assets/images/insomnia-get-products.png)
 
-The following animation shows the application's GET routes to return a single category, a single product, and a single tag being tested in Insomnia:
+The following image shows the application's GET route to return all categories being tested in Insomnia:
 
-![In Insomnia, the user tests “GET tag by id,” “GET Category by ID,” and “GET One Product.”](./Assets/)
+![In Insomnia, the user tests “GET Categories”](./assets/images/insomnia-get-categories.png)
 
-The example test the application's POST below:
-
-`TBC`
 
 ### Associations
 
