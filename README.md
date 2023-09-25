@@ -59,6 +59,9 @@ Click on image below to visit page:
 npm install and node server.js to run
 ```
 
+## Raw Link
+https://delt-fitness-e-commerce-36c3e8da33f5.herokuapp.com/
+
 ## Testing
 
 > **Important**: `Insomnia` was for testing the application's GET routes some models
