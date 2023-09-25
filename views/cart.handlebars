@@ -1,3 +1,21 @@
+comments
+<h1>Your Shopping Cart</h1>
+<form id="checkout-form">
+  <button id="checkoutBtn" type="submit" class="btn btn-primary">Checkout</button>
+</form>
+<ul>
+  {{#each cartProducts}}
+    <li>
+      <h2>{{product_name}}</h2>
+      <p>{{product_description}}</p>
+      <p>Price: ${{price}}</p>
+      <div>
+        <input type="hidden" id="product-id" name="product" value="{{id}}">
+      </div>
+    </li>
+  {{/each}}
+</ul>
+=======
 <div class="container">
     <h2>Cart</h2>
     <ul class="list-group list-group-flush mt-5" style="width: 50rem;">
@@ -22,3 +40,4 @@
         <button id="checkoutBtn" type="submit" class="btn btn-primary">Checkout</button>
     </form>
 </div>
+main
