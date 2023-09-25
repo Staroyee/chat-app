@@ -1,35 +1,35 @@
 /* import bootstrap icon fonts */
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css');
 
 body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar-light .nav-item.active .nav-link,
 .navbar-light .nav-item .nav-link:active,
 .navbar-light .nav-item .nav-link:focus,
 .navbar-light .nav-item:hover .nav-link {
-    color:  rgb(79, 226, 255) ;
+  color: rgb(79, 226, 255);
 }
 
 .bi-cart {
-    vertical-align: 50% !important;
+  vertical-align: 50% !important;
 }
 
 .carousel-inner {
-    width:100%;
-    object-fit: contain;
-    object-position: center;
-    overflow: hidden;
-    max-height: 60vh !important;
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+  overflow: hidden;
+  max-height: 60vh !important;
 }
 
 .footer {
-    position: relative;
-    height: 150px;
-    bottom: 0;
-    clear: both;
-    padding-top: 200px;
-  } 
+  position: relative;
+  height: 150px;
+  bottom: 0;
+  clear: both;
+  padding-top: 200px;
+}

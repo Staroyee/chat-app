@@ -23,25 +23,25 @@ router.get('/', withAuth, async (req, res) => {
 router.get('/orders/:id', withAuth, async (req, res) => {
   try {
     const order = await Orders.findByPk(req.params.id);
-    if(!order) {
-        res.status(404).json({ message: 'No order found'});
-        return;
-      }
-      res.status(200).json(order);
-    } catch (err) {
-      res.status(500).json(err);
+    if (!order) {
+      res.status(404).json({ message: 'No order found' });
+      return;
     }
+    res.status(200).json(order);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 // ROUTE TO CREATE AN ORDER
 router.post('/:id', async (req, res) => {
-    const data = req.body;
-    try {
-      const order = await Orders.bulkCreate(data);
-      res.status(200).json({ success: true, data: order });
-    } catch (err) {
-      res.status(500).json({ success: false, err: err.message });
-    }
-  });
+  const data = req.body;
+  try {
+    const order = await Orders.bulkCreate(data);
+    res.status(200).json({ success: true, data: order });
+  } catch (err) {
+    res.status(500).json({ success: false, err: err.message });
+  }
+});
 
 module.exports = router;
