@@ -15,7 +15,6 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 
-
 app.use(morgan('combined'));
 app.use(helmet());
 app.engine('handlebars', hbs.engine);
