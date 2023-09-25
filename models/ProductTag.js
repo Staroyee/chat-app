@@ -1,8 +1,10 @@
+// IMPORT SEQUELIZE MODEL AND DATATYPES
 const { Model, DataTypes } = require('sequelize');
+// IMPORT SEQUELIZE CONNECTION
 const sequelize = require('../config/connection');
-
+// DEFINE THE CLASS
 class ProductTag extends Model {}
-
+// PRODUCTTAG MODEL DEFINITION
 ProductTag.init(
   {
     id: {
@@ -34,5 +36,5 @@ ProductTag.init(
     modelName: 'product_tag',
   }
 );
-
+// EXPORT THE PRODUCTTAG MODEL
 module.exports = ProductTag;

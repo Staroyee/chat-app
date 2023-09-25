@@ -1,0 +1,34 @@
+[
+    {
+        "user_name": "Daniel",
+        "email": "dan@gmail.com",
+        "address": "10 John Doe street, Adelaide, SA",
+        "phone": "0456 123 535",
+        "password": "pass123",
+        "order_id": 1
+    },
+    {
+        "user_name": "Eliab",
+        "email": "eliab@gmail.com",
+        "address": "30 Jane Doe street, Norwood, SA",
+        "phone": "0465 123 563",
+        "password": "pass123",
+        "order_id": 1
+    },
+    {
+        "user_name": "Luan",
+        "email": "luan@gmail.com",
+        "address": "5 Geoffery street, Seaford, SA",
+        "phone": " 0421213352",
+        "password": "pass123",
+        "order_id": 1
+    },
+    {
+        "user_name": "Tyson",
+        "email": "tyson@gmail.com",
+        "address": "15 James Doe street, Grange, SA",
+        "phone": "0442 213 131",
+        "password": "pass123",
+        "order_id": 1
+    }
+]

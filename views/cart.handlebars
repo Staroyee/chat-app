@@ -1,0 +1,45 @@
+<div class='container'>
+  <h1>Your Shopping Cart</h1>
+  <ul class='list-group list-group-flush mt-5' style='width: 50rem;'>
+    {{#each cartProducts}}
+      <li class='list-group-item'>
+        <div class='row justify-content-start'>
+          <div class='col-6 col-lg-2 col-md-2 col-sm-2'>
+            <img
+              src='{{images}}'
+              class='img-thumbnail'
+              alt='product image'
+              style='width: 5rem;'
+            />
+          </div>
+          <div class='col-6 col-lg-10 col-md-8 col-sm-8'>
+            <h4>{{product_name}}</h4>
+            <h5>${{price}}</h5>
+          </div>
+          <div>
+            <input
+              type='hidden'
+              id='product-id'
+              name='product'
+              value='{{id}}'
+            />
+          </div>
+          <div>
+            <button
+              class='btn btn-danger delete-button'
+              style='margin-top: 5px;'
+              data-product-id='{{id}}'
+            ><i class='fas fa-times'></i>X</button>
+          </div>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+  <form class='mt-4' id='checkout-form'>
+    <button
+      id='checkoutBtn'
+      type='submit'
+      class='btn btn-primary'
+    >Checkout</button>
+  </form>
+</div>

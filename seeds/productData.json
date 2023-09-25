@@ -1,0 +1,50 @@
+[
+  {
+    "product_name": "2.27kg Premium Protein Powder",
+    "product_description": "2.27kg premium protein powder with BCAAs, gold standard.",
+    "price": 99.99,
+    "images": "/images/protein.JPG",
+    "stock": 12,
+    "category_id": 1
+  },
+  {
+    "product_name": "250g Creatine Monohydrate",
+    "product_description": "Creatine Monohydrate offers great value and can help users with strength gain and increase muscle volume.",
+    "price": 29.99,
+    "images": "/images/creatine.JPG",
+    "stock": 12,
+    "category_id": 1
+  },
+  {
+    "product_name": "15kg Dumbbell",
+    "product_description": "Solid steel 20kg dumbbell ",
+    "price": 49.99,
+    "images": "/images/dumbbell.JPG",
+    "stock": 14,
+    "category_id": 2
+  },
+  {
+    "product_name": "20kg Barbell",
+    "product_description": "Solid steel 20kg barbell with grips",
+    "price": 79.99,
+    "images": "/images/barbell.JPG",
+    "stock": 25,
+    "category_id": 2
+  },
+  {
+    "product_name": "1L Insulated Water Bottle",
+    "product_description": "1L insulated squeeze water bottle",
+    "price": 15.99,
+    "images": "/images/waterbottle.JPG",
+    "stock": 50,
+    "category_id": 3
+  },
+  {
+    "product_name": "Sports towel",
+    "product_description": "Fast drying, super absorbent microfiber towels 40x80cm",
+    "price": 19.99,
+    "images": "/images/towel.JPG",
+    "stock": 22,
+    "category_id": 3
+  }
+]

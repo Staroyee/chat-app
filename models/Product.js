@@ -1,8 +1,10 @@
+// IMPORT SEQUELIZE MODEL AND DATATYPES
 const { Model, DataTypes } = require('sequelize');
+// IMPORT SEQUELIZE CONNECTION
 const sequelize = require('../config/connection');
-
+// DEFINE THE CLASS
 class Product extends Model {}
-
+// PRODUCT MODEL DEFINITION
 Product.init(
   {
     id: {
@@ -25,6 +27,10 @@ Product.init(
       validate: {
         isDecimal: true,
       },
+    },
+    images: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     stock: {
       type: DataTypes.INTEGER,
@@ -51,5 +57,5 @@ Product.init(
     modelName: 'product',
   }
 );
-
+// EXPORT THE PRODUCT MODEL
 module.exports = Product;
