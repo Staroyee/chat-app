@@ -11,5 +11,10 @@ document
       },
       body: JSON.stringify({ productId }),
     });
-    console.log('hello', response);
+    if (response.ok) {
+      // Redirect to /profile if the POST request was successful
+      window.location.href = '/profile';
+    } else {
+      console.error('Failed to checkout:', response);
+    }
   });

@@ -248,17 +248,16 @@ router.post('/checkout', withAuth, async (req, res) => {
   try {
     const productIds = req.body.productId;
     const userId = req.session.user_id;
-
+    // Validate input
+    if (!productIds || !userId) {
+      return res.status(400).send('Bad Request: Missing required fields');
+    }
     const order = await Orders.create({
       product_id: productIds,
       user_id: userId,
     });
-
     if (order) {
-      // Include a success message in the URL query parameter
-      res.redirect('/profile?success=Order created successfully', {
-        
-      });
+      res.redirect(303, '/profile?success=Order created successfully');
     } else {
       res.status(500).send('Error creating the order.');
     }
