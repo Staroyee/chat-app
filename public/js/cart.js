@@ -15,3 +15,22 @@ addToCartButtons.forEach(button => {
 viewCartButton.addEventListener("click", function () {
   window.location.href = `/cart?productIds=${JSON.stringify(cartProducts)}`;
 });
+
+let opt = {
+  initialText: "Add to Cart",
+  textOnClick: "Item Added",
+  interval: 1000,
+};
+
+addToCartButtons.forEach(addToCartButtons => {
+  addToCartButtons.addEventListener("click", function () {;
+    addToCartButtons.innerHTML = opt.textOnClick;
+  let reinit = () => {
+    addToCartButtons.innerHTML = opt.initialText;
+  };
+  setTimeout(reinit, opt.interval);
+  })
+});
+
+
+
