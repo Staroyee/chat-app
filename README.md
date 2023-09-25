@@ -72,7 +72,185 @@ The example test the application's POST below:
 
 ### Associations
 
-`TBC`
+* `Category`
+
+  * `id`
+
+    * Integer.
+  
+    * Doesn't allow null values.
+  
+    * Set as primary key.
+  
+    * Uses auto increment.
+
+  * `category_name`
+  
+    * String.
+  
+    * Doesn't allow null values.
+
+* `Order`
+
+  * `id`
+
+    * Integer.
+
+    * Doesn't allow null values.
+
+    * Set as primary key.
+
+    * Uses auto increment.
+
+  * `product_id`
+
+    * Integer.
+
+    * References the `Product` model's `id`.
+
+  * `user_id`
+
+    * Integer.
+
+    * References the `User` model's `id`.
+
+* `Product`
+
+  * `id`
+  
+    * Integer.
+  
+    * Doesn't allow null values.
+  
+    * Set as primary key.
+  
+    * Uses auto increment.
+
+  * `product_name`
+  
+    * String.
+  
+    * Doesn't allow null values.
+  * `product_description`
+  
+    * String.
+  
+    * Doesn't allow null values.
+
+  * `price`
+  
+    * Decimal.
+  
+    * Doesn't allow null values.
+  
+    * Validates that the value is a decimal.
+  * `image`
+  
+    * String.
+  
+    * Doesn't allow null values.
+
+  * `stock`
+  
+    * Integer.
+  
+    * Doesn't allow null values.
+  
+    * Set a default value of `10`.
+  
+    * Validates that the value is numeric.
+
+  * `category_id`
+  
+    * Integer.
+  
+    * References the `Category` model's `id`.
+
+* `ProductTag`
+
+  * `id`
+
+    * Integer.
+
+    * Doesn't allow null values.
+
+    * Set as primary key.
+
+    * Uses auto increment.
+
+  * `product_id`
+
+    * Integer.
+
+    * References the `Product` model's `id`.
+
+  * `tag_id`
+
+    * Integer.
+
+    * References the `Tag` model's `id`.
+
+* `Tag`
+
+  * `id`
+  
+    * Integer.
+  
+    * Doesn't allow null values.
+  
+    * Set as primary key.
+  
+    * Uses auto increment.
+
+  * `tag_name`
+  
+    * String.
+
+* `User`
+
+  * `id`
+  
+    * Integer.
+  
+    * Doesn't allow null values.
+  
+    * Set as primary key.
+  
+    * Uses auto increment.
+
+  * `email`
+  
+    * String.
+  
+    * Doesn't allow null values.
+
+    * Unique
+  
+    * Validates that the value is email.
+
+  * `phone`
+  
+    * String.
+  
+    * Doesn't allow null values.
+
+  * `email`
+  
+    * String.
+  
+    * Doesn't allow null values.
+  
+    * Validates that the value length greater than 6.
+
+### Associations/Relationship
+
+* `Product` belongs to `Category`, and `Category` has many `Product` models, as a category can have multiple products but a product can only belong to one category.
+
+* `Product` belongs to many `Tag` models, and `Tag` belongs to many `Product` models. Allow products to have multiple tags and tags to have many products by using the `ProductTag` through model.
+
+* `Order` belongs to `User`, and `User` has many `Order` models, as a user can have multiple orders but a order can only belong to one user.
+
+* `Order` belongs to `Product`, and `Product` has many `Order` models, as a product can have multiple orders but a order can only belong to one product.
 
 ## License
 
