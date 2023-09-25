@@ -11,6 +11,7 @@ document
       },
       body: JSON.stringify({ productId }),
     });
+
     if (response.ok) {
       // Redirect to /profile if the POST request was successful
       window.location.href = '/profile';

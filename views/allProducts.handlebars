@@ -1,6 +1,8 @@
 <h1>All products</h1>
-  <div class="row">
-    {{#each products as |product|}}
-    {{> productCard this}}
-   {{/each}}
-  </div>
+<div class="container container-fluid d-flex mt-4">
+    <div class="row mt-5 ">
+        {{#each products as |product|}}
+        {{> productCard this}}
+        {{/each}}
+    </div>
+</div>
